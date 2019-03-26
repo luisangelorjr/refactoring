@@ -14,6 +14,8 @@ public class CartaoUtil {
 	public static final int DINERS = 4;
 	public static final String CARTAO_OK = "Cartão válido";
 	public static final String CARTAO_ERRO = "Cartão inválido";
+	
+	public static boolean TEMP_CARTAO = true;
 
 	public String validar(int bandeira, String numero, String validade) {
 		
@@ -43,14 +45,7 @@ public class CartaoUtil {
 		} else {
 
 			// ---- PREFIXO E TAMANHO -----
-			String formatado = "";
-			// remove caracteres não-numéricos
-			for (int i = 0; i < numero.length(); i++) {
-				char c = numero.charAt(i);
-				if (Character.isDigit(c)) {
-					formatado += c;
-				}
-			}
+			String formatado = numero.replaceAll("\\D", "");
 
 			boolean formatoOK = false;
 
